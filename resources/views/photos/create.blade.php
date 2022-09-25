@@ -1,4 +1,4 @@
-@extends('layouts.default');
+@extends('layouts.default')
 
 @section('title', '画像アップロード')
 @section('content')
