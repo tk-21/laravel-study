@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
 {
@@ -67,14 +68,10 @@ class PhotoController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    // アップロード画像の削除処理
+    public function destroy($fileName)
     {
-        //
+        Storage::disk('public')->delete('photos/'. $fileName);
+        return to_route('photos.create')->with('success', '削除しました');
     }
 }
